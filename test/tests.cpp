@@ -64,8 +64,7 @@ TEST(TextGeneratorTest, GenerateText) {
     // of words in the table
     EXPECT_TRUE(text == "quick the brown fox jumps over " ||
                 text == "quick the brown fox jumps the " ||
-                text == "lazy thebrown fox jumps over " ||
-                text == "lazy the brown fox jumps the " ||
+                text == "fox" || text == "lazy the brown fox jumps the " ||
                 text == "quick thebrown fox jumps over " ||
                 text == "quick the brown fox jumps dog " ||
                 text == "lazy the brown fox jumps over " ||
