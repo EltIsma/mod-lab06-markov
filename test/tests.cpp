@@ -23,6 +23,22 @@ TEST(TextGenerator, BuildEntry) {
     ASSERT_EQ(entry.second, "brown");
 }
 
+// Test selecting a single suffix from a vector
+TEST(TextGeneratorTest, SelectSuffixSingle) {
+    std::vector<std::string> suffixes{"jumps"};
+    TextGenerator gen;
+    std::string suff = gen.selectSuffix(suffixes);
+    EXPECT_EQ(suff, "jumps");
+}
+
+// Test selecting a suffix from a vector with multiple options
+TEST(TextGeneratorTest, SelectSuffixMultiple) {
+    std::vector<std::string> suffixes{"over", "under", "around"};
+    TextGenerator gen;
+    std::string suff = gen.selectSuffix(suffixes);
+    // The selected suffix should be one of the options
+    EXPECT_TRUE(suff == "over" || suff == "under" || suff == "around");
+}
 
 
 

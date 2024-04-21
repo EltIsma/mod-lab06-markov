@@ -54,3 +54,10 @@ std::pair<prefix, std::string> TextGenerator::buildEntry(const prefix& p,
     return std::make_pair(p, suffix);
 }
 
+std::string TextGenerator::selectSuffix(
+    const std::vector<std::string> &suffixes) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, suffixes.size() - 1);
+    return suffixes[dis(gen)];
+}
