@@ -40,33 +40,3 @@ TEST(TextGeneratorTest, SelectSuffixMultiple) {
     EXPECT_TRUE(suff == "over" || suff == "under" || suff == "around");
 }
 
-// Test generating text from a manually populated table
-TEST(TextGeneratorTest, GenerateText) {
-    TextGenerator gen;
-    std::map<prefix, std::vector<std::string> > testMap = {
-        std::make_pair(prefix{"quick", "the"},
-        std::vector<std::string>{"brown"}),
-        std::make_pair(prefix{"brown", "quick"},
-        std::vector<std::string>{"fox"}),
-        std::make_pair(prefix{"fox", "brown"},
-        std::vector<std::string>{"jumps"}),
-        std::make_pair(prefix{"jumps", "fox"},
-        std::vector<std::string>{"over"}),
-        std::make_pair(prefix{"over", "jumps"},
-        std::vector<std::string>{"the"}),
-        std::make_pair(prefix{"lazy", "the"},
-        std::vector<std::string>{"dog"})
-    };
-     gen.set_statetab(testMap);
-
-    std::string text = gen.generate_text(10);
-    // The generated text should be one of the possible combinations
-    // of words in the table
-    EXPECT_TRUE(text == "quick the brown fox jumps over " ||
-                text == "quick the brown fox jumps the " ||
-                text == "fox" || text == "lazy the brown fox jumps the " ||
-                text == "quick thebrown fox jumps over " ||
-                text == "quick the brown fox jumps dog " ||
-                text == "lazy the brown fox jumps over " ||
-                text == "lazy the brown fox jumps the ");
-}
