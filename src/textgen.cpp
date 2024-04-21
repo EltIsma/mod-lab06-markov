@@ -62,7 +62,7 @@ std::mt19937& gen) {
 }
 
 std::string TextGenerator::chooseSuffix(const std::vector<std::pair<std::string,
-int>>& suffixes, std::mt19937& gen) {
+int>>& suffixes, const std::mt19937& gen) {
     int total_count = 0;
     for (const auto& suffix : suffixes) {
         total_count += suffix.second;
@@ -79,7 +79,7 @@ int>>& suffixes, std::mt19937& gen) {
 }
 
 prefix TextGenerator::choosePrefix(const std::unordered_map<prefix,
-std::vector<std::string>>& statetab, std::mt19937& gen) {
+std::vector<std::string>>& statetab, const std::mt19937& gen) {
     std::uniform_int_distribution<> dis(0, statetab.size() - 1);
     int random_index = dis(gen);
     auto it = std::next(statetab.begin(), random_index);
