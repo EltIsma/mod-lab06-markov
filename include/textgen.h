@@ -27,6 +27,7 @@ class TextGenerator {
     void set(std::map<prefix, std::vector<std::string>> string);
     std::map<prefix, std::vector<std::string>> get();
     std::string selectSuffix(const std::vector<std::string> &suffixes);
+    void set_statetab(std::map<prefix, std::vector<std::string> > _map);
 };
 
 #endif  // INCLUDE_TEXTGEN_H_

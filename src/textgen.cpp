@@ -61,3 +61,7 @@ std::string TextGenerator::selectSuffix(
     std::uniform_int_distribution<> dis(0, suffixes.size() - 1);
     return suffixes[dis(gen)];
 }
+
+void TextGenerator::set_statetab(std::map<prefix,
+std::vector<std::string> > _map)
+    { statetab = _map; }

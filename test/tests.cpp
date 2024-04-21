@@ -43,7 +43,7 @@ TEST(TextGeneratorTest, SelectSuffixMultiple) {
 // Test generating text from a manually populated table
 TEST(TextGeneratorTest, GenerateText) {
     TextGenerator gen;
-    gen.statetab = {
+    std::map<prefix, std::vector<std::string> > testMap = {
         std::make_pair(prefix{"the", ""},
         std::vector<std::string>{"quick", "lazy"}),
         std::make_pair(prefix{"quick", "the"},
@@ -59,6 +59,7 @@ TEST(TextGeneratorTest, GenerateText) {
         std::make_pair(prefix{"lazy", "the"},
         std::vector<std::string>{"dog"})
     };
+     gen.set_statetab(testMap);
 
     std::string text = gen.generate_text(5);
     // The generated text should be one of the possible combinations
