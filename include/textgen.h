@@ -10,6 +10,7 @@
 #include <map>
 #include <vector>
 #include <unordered_map>
+#include <random>
 
 typedef std::deque<std::string> prefix;  // очередь префиксов
 
@@ -23,7 +24,7 @@ class TextGenerator {
     int prefix_length);
     std::pair<prefix, std::string> buildEntry(const prefix& p,
     const std::string& suffix);
-    std::string TextGenerator::chooseSingleSuffix(
+    std::string chooseSingleSuffix(
     const std::vector<std::string>& suffixes,
     std::mt19937& gen);
     std::string chooseSuffix(const std::vector<std::pair<std::string,
