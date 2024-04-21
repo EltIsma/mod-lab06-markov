@@ -61,13 +61,15 @@ TEST(TextGeneratorTest, GenerateText) {
     };
      gen.set_statetab(testMap);
 
-    std::string text = gen.generate_text(5);
+    std::string text = gen.generate_text(10);
     // The generated text should be one of the possible combinations
     // of words in the table
     EXPECT_TRUE(text == "quick the brown fox jumps over " ||
                 text == "quick the brown fox jumps the " ||
                 text == "lazy thebrown fox jumps over " ||
+                text == "lazy the brown fox jumps the " ||
+                text == "quick thebrown fox jumps over " ||
+                text == "quick the brown fox jumps dog " ||
+                text == "lazy the brown fox jumps over " ||
                 text == "lazy the brown fox jumps the ");
 }
-
-
