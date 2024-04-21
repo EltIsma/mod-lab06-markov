@@ -44,8 +44,6 @@ TEST(TextGeneratorTest, SelectSuffixMultiple) {
 TEST(TextGeneratorTest, GenerateText) {
     TextGenerator gen;
     std::map<prefix, std::vector<std::string> > testMap = {
-        std::make_pair(prefix{"the", ""},
-        std::vector<std::string>{"quick", "lazy"}),
         std::make_pair(prefix{"quick", "the"},
         std::vector<std::string>{"brown"}),
         std::make_pair(prefix{"brown", "quick"},
