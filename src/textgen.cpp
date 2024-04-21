@@ -54,35 +54,3 @@ std::pair<prefix, std::string> TextGenerator::buildEntry(const prefix& p,
     return std::make_pair(p, suffix);
 }
 
-std::string TextGenerator::chooseSingleSuffix(
-const std::vector<std::string>& suffixes,
-std::mt19937& gen) {
-    std::uniform_int_distribution<> dis(0, suffixes.size() - 1);
-    return suffixes[dis(gen)];
-}
-
-std::string TextGenerator::chooseSuffix(const std::vector<std::pair<std::string,
-int>>& suffixes, const std::mt19937& gen) {
-    int total_count = 0;
-    for (const auto& suffix : suffixes) {
-        total_count += suffix.second;
-    }
-    std::uniform_int_distribution<> dis(0, total_count - 1);
-    int random_count = dis(gen);
-    for (const auto& suffix : suffixes) {
-        if (random_count < suffix.second) {
-            return suffix.first;
-        }
-        random_count -= suffix.second;
-    }
-    return ""; // shouldn't reach here
-}
-
-prefix TextGenerator::choosePrefix(const std::unordered_map<prefix,
-std::vector<std::string>>& statetab, const std::mt19937& gen) {
-    std::uniform_int_distribution<> dis(0, statetab.size() - 1);
-    int random_index = dis(gen);
-    auto it = std::next(statetab.begin(), random_index);
-    return it->first;
-}
-

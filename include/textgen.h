@@ -24,13 +24,6 @@ class TextGenerator {
     int prefix_length);
     std::pair<prefix, std::string> buildEntry(const prefix& p,
     const std::string& suffix);
-    std::string chooseSingleSuffix(
-    const std::vector<std::string>& suffixes,
-    std::mt19937& gen);
-    std::string chooseSuffix(const std::vector<std::pair<std::string,
-    int>>& suffixes, const std::mt19937& gen);
-    prefix choosePrefix(const std::unordered_map<prefix,
-    std::vector<std::string>>& statetab, const std::mt19937& gen);
 };
 
 #endif  // INCLUDE_TEXTGEN_H_
